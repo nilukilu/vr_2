@@ -1,0 +1,96 @@
+<!--Modaalaken fotogalerii jaoks-->
+  <div id="modalarea" class="modalarea">
+	<!--sulgemisnupp-->
+	<span id="modalclose" class="modalclose">&times;</span>
+	<!--pildikoht-->
+	<div class="modalhorizontal">
+		<div class="modalvertical">
+			<p id="modalcaption"></p>
+			<img id="modalimg" src="../img/empty.png" alt="galeriipilt">
+
+			
+		</div>
+	</div>
+  </div>
+  
+  
+  
+  <!--pildi hindamine-->
+  			
+			<br>
+			<div id="rating" class="modalRating">
+				<label><input id="rate1" name="rating" type="radio" value="1">1</label>
+				<label><input id="rate2" name="rating" type="radio" value="2">2</label>
+				<label><input id="rate3" name="rating" type="radio" value="3">3</label>
+				<label><input id="rate4" name="rating" type="radio" value="4">4</label>
+				<label><input id="rate5" name="rating" type="radio" value="5">5</label>
+				<button id="storeRating">Salvesta hinnang!</button>
+				<br>
+				<p id="avgRating"></p>
+			</div>
+			
+			
+			
+Hinnete andmebaas
+CREATE TABLE `andrusrinde`.`vr21_photoratings` ( `vr21_photoratings_id` INT(11) NOT NULL AUTO_INCREMENT , `vr21_photoratings_photoid` INT(11) NOT NULL , `vr21_photoratings_userid` INT(11) NOT NULL , `vr21_photoratings_rating` INT(1) NOT NULL , `vr21_photoratings_added` DATE NOT NULL DEFAULT CURRENT_TIMESTAMP , PRIMARY KEY (`vr21_photoratings_id`)) ENGINE = InnoDB;		
+			
+			
+			
+			
+modal.css
+----------------------------------------
+
+.modalarea {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.9);
+	color: white;
+	font-family: arial, sans-serif;
+	font-size: 1.25em;
+}
+
+.modalclose {
+    position: absolute;
+    top: 15px;
+    right: 35px;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.modalclose:hover, .modalclose:focus {
+    color: #bbb;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+ .modalvertical {
+	text-align: center;
+}
+
+.modalhorizontal {
+	height: 100%;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	animation-name: zoom;
+    animation-duration: 0.6s;
+}
+
+.modalrating {
+	margin-top: 10px;
+}
+
+
+@keyframes zoom {
+    from {transform:scale(0); opacity: 0;} 
+    to {transform:scale(1); opacity: 1;}
+}
